@@ -26,6 +26,41 @@ function same(arr1, arr2) {
     // if the length of each array is 0 by the end, return true. else, return false
 }
 
+function same2(arr1, arr2) {
+
+    if (arr1.length !== arr2.length) {
+      return false
+    };
+    let freqCounter1 = {};
+    let freqCounter2 = {};
+
+    for (let val of arr1) {
+        freqCounter1[val] = (freqCounter1[val] || 0) + 1;
+    }
+    for (let val of arr2) {
+        freqCounter2[val] = (freqCounter2[val] || 0) + 1;
+    }
+
+    console.log('1', freqCounter1);
+    console.log('2', freqCounter2);
+
+    for (let key in freqCounter1) {
+      // if corresponding sq. key doesn't exist in obj2
+      if (!(key ** 2 in freqCounter2)) {
+        // console.log('this runs?')
+        return false;
+      }
+      // if frequency of key/values dont match
+      if (freqCounter1[key] !== freqCounter2[key**2]) {
+        // console.log('this 2 runs?')
+        return false;
+      }
+    }
+
+    // return true if both objs match
+    return true;
+}
+
 // examples
 console.log(same([2,2,2], [4,4,4])) // returns true
 console.log(same([1], [4])) // returns false
