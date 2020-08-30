@@ -3,17 +3,14 @@ function sumZero(arr) {
     let right = arr.length-1;
 
     while(left < right) {
-        if (arr[left] + arr[right] > 0) {
+        let sum = arr[left] + arr[right];
+
+        if (sum === 0) {
+            return [arr[left], arr[right]];
+        } else if (sum > 0) {
             right--;
-        }
-        if (arr[left] + arr[right] < 0) {
+        } else if (sum < 0) {
             left++;
-        }
-        if (left === right) {
-          return false;
-        }
-        if (arr[left] + arr[right] === 0) {
-            return [arr[left], arr[right]]
         }
     }
     return false;
@@ -23,3 +20,5 @@ console.log(sumZero([-3,-2,-1,0,1,2,3]))
 console.log(sumZero([-2,0,1,3]))
 console.log(sumZero([1,2,3]))
 console.log(sumZero([-4,-3,-2,-1,0,1,2,5]))
+
+// improvements would be to set a variable of sum and check for its value, keep the > or < if statements but within elseif logic
