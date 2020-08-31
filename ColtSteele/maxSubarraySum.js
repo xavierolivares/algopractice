@@ -12,9 +12,10 @@ function maxSubarraySum(arr, num) {
         sum -= arr[i];
         sum += arr[windowsEnd];
         console.log('sumpost', sum)
-        if (sum > max) {
-            max = sum;
-        }
+        // if (sum > max) {
+        //     max = sum;
+        // }
+        max = Math.max(max, sum);
     }
     return max;
 }
